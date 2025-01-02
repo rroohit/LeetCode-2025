@@ -33,6 +33,7 @@ fun main() {
 
 }
 
+/// Prefix Sum ::
 fun vowelStrings(words: Array<String>, queries: Array<IntArray>): IntArray {
     val prefixSum = IntArray(words.size + 1) // SC - O(n) -  n size of words.
     for (i in words.indices) { // TC - O(n) - n size of words.
@@ -47,7 +48,9 @@ fun vowelStrings(words: Array<String>, queries: Array<IntArray>): IntArray {
     return result
 }
 
-
+/// Prefix Sum
+// TC - O(n + m)
+// SC - O(n + m)
 fun vowelStrings1(words: Array<String>, queries: Array<IntArray>): IntArray {
     val prefixSum = IntArray(words.size)
     var currSum = 0
