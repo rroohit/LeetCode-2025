@@ -1,5 +1,7 @@
 package a_january
 
+import kotlin.math.max
+
 /**
  *  Problem  10. Word Subsets.
  *
@@ -8,9 +10,12 @@ package a_january
  *  ## Approach -
  *
  *  ## Complexity:
- *       - Time complexity:
+ *       - Time complexity: O(n * avgWordLen + m * maxLen)
+ *              - n is size of the words1 array
+ *              - m is size of the words2 array
  *
- *       - Space complexity:
+ *       - Space complexity: O(n * avgWordLen)
+ *              - n is size fo the words2 array
  *
  * ## Code -
  */
@@ -40,21 +45,23 @@ fun main() {
 // TC -
 fun wordSubsets(words1: Array<String>, words2: Array<String>): List<String> {
     val result = mutableListOf<String>()
-    val charCount = Array(words2.size) { IntArray(26) } // sp - O(m * 26)
-    for (i in words2.indices) { // TC - O(m + maxLen)
-        charCount[i] = words2[i].createCharCount() // TC - O(len)
+    val newCount = IntArray(26)
+
+    for (word in words2) {
+        val cnt = word.createCharCount()
+        for (i in 0..25) {
+            newCount[i] = max(newCount[i], cnt[i])
+        }
     }
 
-    for (word in words1) { // TC - O(n * m)
+    for (word in words1) {
         var isUniversal = true
-        val mapCount = word.createCharCount() // O(len)
-        for (ints in charCount) { // TC - O(m * 26)
-            for (i in mapCount.indices) { // TC - O(26)
-                if (mapCount[i] >= ints[i]) continue
+        val mapCount = word.createCharCount()
+        for (i in mapCount.indices) {
+            if (mapCount[i] < newCount[i]) {
                 isUniversal = false
                 break
             }
-            if (!isUniversal) break
         }
 
         if (isUniversal) result.add(word)
