@@ -37,10 +37,7 @@ fun minimumLength(s: String): Int {
     var len = n
     for (count in countMap) {
         if (count == 0) continue
-        if (count > 2) {
-            val maxDelete = (count - 1) - ((count -1) % 2)
-            len -= maxDelete
-        }
+        if (count > 2) len -= (count - 1) - ((count - 1) % 2)
     }
 
     return len
