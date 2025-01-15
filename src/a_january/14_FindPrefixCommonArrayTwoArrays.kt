@@ -30,19 +30,6 @@ fun main() {
 }
 
 fun findThePrefixCommonArray(A: IntArray, B: IntArray): IntArray {
-    val n: Int = A.size
-    val prefixCommonArray = IntArray(n)
-    val frequency = IntArray(n + 1)
-    var commonCount = 0
 
-    for (currentIndex in 0..<n) {
-        frequency[A[currentIndex]] += 1
-        if (frequency[A[currentIndex]] == 2) ++commonCount
-        frequency[B[currentIndex]] += 1
-        if (frequency[B[currentIndex]] == 2) ++commonCount
-
-        prefixCommonArray[currentIndex] = commonCount
-    }
-
-    return prefixCommonArray
+    return intArrayOf()
 }
