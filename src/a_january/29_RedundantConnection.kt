@@ -19,7 +19,6 @@ import java.util.*
  */
 fun main() {
 
-
     val testCases = listOf(
         arrayOf(intArrayOf(1, 2), intArrayOf(1, 3), intArrayOf(2, 3))
     )
