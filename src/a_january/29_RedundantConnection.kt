@@ -46,10 +46,10 @@ fun findRedundantConnection(edges: Array<IntArray>): IntArray {
 
     val cycleNodes: MutableMap<Int, Int> = HashMap()
     var node = cycleStart
-    do {
+    while (!cycleNodes.containsKey(node)) {
         cycleNodes[node] = 1
         node = parent[node]
-    } while (node != cycleStart)
+    }
 
     for (i in edges.indices.reversed()) {
         if (cycleNodes.containsKey(edges[i][0] - 1) &&
