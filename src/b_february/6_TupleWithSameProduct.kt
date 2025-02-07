@@ -32,7 +32,6 @@ fun main() {
 fun tupleSameProduct(nums: IntArray): Int {
     val numsLength = nums.size
     val pairProductsFrequency: MutableMap<Int, Int> = HashMap()
-
     var totalNumberOfTuples = 0
 
     for (firstIndex in 0..<numsLength) {
@@ -47,7 +46,6 @@ fun tupleSameProduct(nums: IntArray): Int {
     for (productValue in pairProductsFrequency.keys) {
         val productFrequency = pairProductsFrequency[productValue]!!
         val pairsOfEqualProduct = ((productFrequency - 1) * productFrequency) / 2
-
         totalNumberOfTuples += 8 * pairsOfEqualProduct
     }
 
