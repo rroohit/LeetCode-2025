@@ -19,7 +19,7 @@ fun main() {
     val testCases = listOf(
         "abc",
         "cb34",
-        "1abc"
+        "a1bc"
     )
 
     testCases.forEach { s: String ->
