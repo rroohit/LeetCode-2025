@@ -8,7 +8,7 @@ package b_february
  *  ## Approach -
  *
  *  ## Complexity:
- *       - Time complexity: O(k)
+ *       - Time complexity: O(1)
  *
  *       - Space complexity: O(n)
  *
@@ -51,6 +51,31 @@ fun main() {
 }
 
 class ProductOfNumbers() {
+    private var stream = ArrayList<Int>()
+    private var size = 0
+
+    init {
+        stream.add(1)
+    }
+
+    fun add(num: Int) {
+        if (num == 0) {
+            stream = ArrayList()
+            stream.add(1)
+            size = 0
+        } else {
+            stream.add(stream[size] * num)
+            size += 1
+        }
+    }
+
+    fun getProduct(k: Int): Int {
+        return if (k > size) 0 else stream[size] / stream[size - k]
+    }
+
+}
+
+class ProductOfNumbers1() {
     private val stream = mutableListOf<Int>()
     fun add(num: Int) {
         stream.add(num)
