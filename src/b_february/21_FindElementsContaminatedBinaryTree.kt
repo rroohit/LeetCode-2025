@@ -41,7 +41,29 @@ fun main() {
 
 }
 
+// DFS
 class FindElements(root: TreeNode?) {
+    private val nums = HashSet<Int>()
+
+    init {
+        dfs(root, 0)
+    }
+
+    private fun dfs(curr: TreeNode?, x: Int) {
+        if (curr == null) return
+        nums.add(x)
+        if (curr.left != null) dfs(curr.left, (2 * x) + 1)
+        if (curr.right != null) dfs(curr.right, (2 * x) + 2)
+    }
+
+    fun find(target: Int): Boolean {
+        return nums.contains(target)
+    }
+
+}
+
+// BFS
+class FindElements1(root: TreeNode?) {
     private val nums = HashSet<Int>()
 
     init {
@@ -50,25 +72,18 @@ class FindElements(root: TreeNode?) {
             nums.add(0)
             val qu = LinkedList<TreeNode>()
             qu.offer(root)
-
             while (qu.isNotEmpty()) {
-                val size = qu.size
-                for (i in 0..<size) {
-                    val curr = qu.poll()!!
-                    val x = curr.`val`
-                    if (curr.left != null) {
-                        val newNum = (2 * x) + 1
-                        curr.left?.`val` = newNum
-                        qu.offer(curr.left)
-                        nums.add(newNum)
-                    }
+                val curr = qu.poll()!!
+                val x = curr.`val`
+                nums.add(x)
+                if (curr.left != null) {
+                    curr.left?.`val` = (2 * x) + 1
+                    qu.offer(curr.left)
+                }
 
-                    if (curr.right != null) {
-                        val newNum = (2 * x) + 2
-                        curr.right?.`val` = newNum
-                        qu.offer(curr.right)
-                        nums.add(newNum)
-                    }
+                if (curr.right != null) {
+                    curr.right?.`val` = (2 * x) + 2
+                    qu.offer(curr.right)
                 }
             }
         }
