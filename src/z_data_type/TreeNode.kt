@@ -30,3 +30,21 @@ fun createTree(values: List<Int?>): TreeNode? {
 
     return root
 }
+
+// Inorder DFS : left -> root -> right
+fun printInorderTree(node: TreeNode?) {
+    val arr = ArrayList<Int>()
+    inorderHelper(node, arr)
+    for (i in arr.indices) {
+        print(arr[i])
+        if (i < arr.size - 1) print(" -> ")
+    }
+    println()
+}
+
+private fun inorderHelper(curr: TreeNode?, arr: ArrayList<Int>) {
+    if (curr == null) return
+    inorderHelper(curr.left, arr)
+    arr.add(curr.`val`)
+    inorderHelper(curr.right, arr)
+}
