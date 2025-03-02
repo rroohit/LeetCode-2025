@@ -20,8 +20,9 @@ fun main() {
         intArrayOf(1, 2, 2, 1, 1, 0),
         intArrayOf(0, 1),
         intArrayOf(1, 0, 1),
-        intArrayOf(1, 1, 1)
-
+        intArrayOf(1, 1, 1),
+        intArrayOf(0, 0, 0, 1),
+        intArrayOf(0, 0, 0, 1, 1)
     )
 
     // 0, 0, 0, 1,
@@ -32,6 +33,22 @@ fun main() {
 }
 
 fun applyOperations(nums: IntArray): IntArray {
+    var l = 0
+    for (i in nums.indices) {
+        if (nums[i] == 0) continue
+        if (i + 1 < nums.size && nums[i] == nums[i + 1]) {
+            nums[l++] = nums[i] * 2
+            nums[i + 1] = 0
+        } else {
+            nums[l++] = nums[i]
+        }
+    }
+
+    while (l < nums.size) nums[l++] = 0
+    return nums
+}
+
+fun applyOperations1(nums: IntArray): IntArray {
     for (i in 0..nums.size - 2) {
         if (nums[i] == 0) continue
         if (nums[i] == nums[i + 1]) {
