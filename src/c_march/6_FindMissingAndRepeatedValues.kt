@@ -40,13 +40,12 @@ fun findMissingAndRepeatedValues(grid: Array<IntArray>): IntArray {
             cnt[grid[row][col]]++
         }
     }
+
     var a = 0
     var b = 0
-
     for (i in 1..<cnt.size) {
         if (cnt[i] == 2) a = i
         if (cnt[i] == 0) b = i
     }
-
     return intArrayOf(a, b)
 }
