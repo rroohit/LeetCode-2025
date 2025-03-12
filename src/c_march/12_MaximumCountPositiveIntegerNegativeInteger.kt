@@ -10,9 +10,9 @@ import kotlin.math.max
  *  ## Approach -
  *
  *  ## Complexity:
- *       - Time complexity: O()
+ *       - Time complexity: O(logn)
  *
- *       - Space complexity: O()
+ *       - Space complexity: O(1)
  *
  * ## Code -
  */
@@ -30,9 +30,30 @@ fun main() {
 
 }
 
+fun maximumCount(nums: IntArray): Int {
+    val n = nums.size
+    var l = 0
+    var r = n - 1
+
+    while (l < r) {
+        val mid = l + (r - l) / 2
+        if (nums[mid] >= 0) r = mid else l = mid + 1
+    }
+
+    val neg = l
+    l = 0
+    r = n - 1
+    while (l < r) {
+        val mid = l + (r - l) / 2
+        if (nums[mid] >= 1) r = mid else l = mid + 1
+    }
+
+    return max(neg, n - l)
+}
+
 
 // TC - O(n) :: SC - O(1)
-fun maximumCount(nums: IntArray): Int {
+fun maximumCount1(nums: IntArray): Int {
     var pos = 0
     var neg = 0
     for (num in nums) {
