@@ -33,7 +33,7 @@ fun main() {
 fun maximumCount(nums: IntArray): Int {
     val n = nums.size
     var l = 0
-    var r = n - 1
+    var r = n
 
     while (l < r) {
         val mid = l + (r - l) / 2
@@ -42,7 +42,7 @@ fun maximumCount(nums: IntArray): Int {
 
     val neg = l
     l = 0
-    r = n - 1
+    r = n
     while (l < r) {
         val mid = l + (r - l) / 2
         if (nums[mid] >= 1) r = mid else l = mid + 1
@@ -60,5 +60,5 @@ fun maximumCount1(nums: IntArray): Int {
         if (num > 0) pos++
         if (num < 0) neg++
     }
-    return max(pos, neg)
+    return if(pos > neg) pos else neg
 }
