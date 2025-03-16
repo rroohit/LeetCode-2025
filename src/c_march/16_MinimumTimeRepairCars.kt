@@ -1,7 +1,5 @@
 package c_march
 
-import kotlin.math.max
-import kotlin.math.min
 import kotlin.math.sqrt
 
 /**
@@ -37,18 +35,15 @@ fun repairCars(ranks: IntArray, cars: Int): Long {
     var maxRank = ranks[0]
 
     for (rank in ranks) {
-        minRank = min(minRank, rank)
-        maxRank = max(maxRank, rank)
+        if (rank < minRank) minRank = rank
+        if (rank > maxRank) maxRank = rank
     }
 
-    val freq = IntArray(maxRank + 1)
-    for (rank in ranks) {
-        minRank = min(minRank, rank)
-        freq[rank]++
-    }
+    val freq = LongArray(maxRank + 1)
+    for (rank in ranks) freq[rank]++
 
     var low: Long = 1
-    var high = 1L * minRank * cars * cars
+    var high: Long = 1L * minRank * cars * cars
 
     while (low < high) {
         val mid = (low + high) / 2
