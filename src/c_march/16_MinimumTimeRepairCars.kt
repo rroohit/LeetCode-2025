@@ -31,6 +31,21 @@ fun main() {
 }
 
 fun repairCars(ranks: IntArray, cars: Int): Long {
+    var low: Long = 1
+    var high: Long = 1L * ranks[0] * cars * cars
+
+    while (low < high) {
+        val mid = (low + high) / 2
+        var carsRepaired: Long = 0
+
+        for (rank in ranks) carsRepaired += (sqrt((1.0 * mid) / rank)).toLong()
+        if (carsRepaired < cars) low = mid + 1 else high = mid
+    }
+    return low
+}
+
+
+fun repairCars1(ranks: IntArray, cars: Int): Long {
     var minRank = ranks[0]
     var maxRank = ranks[0]
 
