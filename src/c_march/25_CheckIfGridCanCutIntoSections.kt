@@ -46,9 +46,7 @@ fun checkValidCuts(n: Int, rectangles: Array<IntArray>): Boolean {
 private fun checkCuts(rectangles: Array<IntArray>, dim: Int): Boolean {
     var gapCount = 0
 
-    Arrays.sort(
-        rectangles
-    ) { a: IntArray, b: IntArray -> Integer.compare(a[dim], b[dim]) }
+    Arrays.sort(rectangles) { a: IntArray, b: IntArray -> a[dim].compareTo(b[dim]) }
 
     var furthestEnd = rectangles[0][dim + 2]
 
