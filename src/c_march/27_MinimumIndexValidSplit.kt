@@ -8,9 +8,9 @@ package c_march
  *  ## Approach -
  *
  *  ## Complexity:
- *       - Time complexity: O()
+ *       - Time complexity: O(n)
  *
- *       - Space complexity: O()
+ *       - Space complexity: O(n)
  *
  * ## Code -
  */
