@@ -10,7 +10,7 @@ package c_march
  *  ## Complexity:
  *       - Time complexity: O(n)
  *
- *       - Space complexity: O(n)
+ *       - Space complexity: O(1)
  *
  * ## Code -
  */
@@ -26,8 +26,38 @@ fun main() {
 
 }
 
-// TC - O(n) :: SC - O(n)
+// Boyer-Moore Majority Voting Algorithm
+// TC - O(n) :: SC - O(1)
 fun minimumIndex(nums: List<Int>): Int {
+    var x = 0
+    var xCount = 0
+    for (num in nums) {
+        if (xCount == 0) {
+            x = num
+            xCount++
+        } else if (x == num) {
+            xCount++
+        } else {
+            xCount--
+        }
+    }
+
+    xCount = 0 // totalCount of x
+    for (num in nums) if (num == x) xCount++
+
+    var leftX = 0 // left window x Count
+    for (i in nums.indices) {
+        val num = nums[i]
+        if (num == x) leftX++
+        val rightX = xCount - leftX // right window x Count
+        if (leftX * 2 > i + 1 && rightX * 2 > nums.size - i - 1) return i
+    }
+
+    return -1
+}
+
+// TC - O(n) :: SC - O(n)
+fun minimumIndex1(nums: List<Int>): Int {
     val first = HashMap<Int, Int>()
     val second = HashMap<Int, Int>()
 
