@@ -42,8 +42,8 @@ private fun postOrder(root: TreeNode?): Pair<TreeNode?, Int> {
         return Pair(null, 0)
     }
 
-    val left = postOrder(root?.left)
-    val right = postOrder(root?.right)
+    val left = postOrder(root.left)
+    val right = postOrder(root.right)
     if (left.second > right.second) {
         return Pair(left.first, left.second + 1)
     }
