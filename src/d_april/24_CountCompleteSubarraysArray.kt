@@ -8,7 +8,7 @@ package d_april
  *  ## Approach -
  *
  *  ## Complexity:
- *       - Time complexity: O(n^2)
+ *       - Time complexity: O(n)
  *
  *       - Space complexity: O(n)
  *
@@ -28,6 +28,31 @@ fun main() {
 }
 
 fun countCompleteSubarrays(nums: IntArray): Int {
+    val totalDistinct = nums.toSet().size
+    val freq = HashMap<Int, Int>()
+    var l = 0
+    var completeKinds = 0
+    var ans = 0
+
+    for (r in nums.indices) {
+        val rightVal = nums[r]
+        freq[rightVal] = freq.getOrDefault(rightVal, 0) + 1
+        if (freq[rightVal] == 1) completeKinds++
+        while (completeKinds == totalDistinct) {
+            ans += (nums.size - r)
+            val leftVal = nums[l]
+            freq[leftVal] = freq[leftVal]!! - 1
+            if (freq[leftVal] == 0) completeKinds--
+            l++
+        }
+    }
+
+    return ans
+}
+
+// Brute force
+// TC - O(n^2) :: SC - O(n)
+fun countCompleteSubarrays1(nums: IntArray): Int {
     val distNums = HashSet<Int>()
     for (num in nums) distNums.add(num)
 
