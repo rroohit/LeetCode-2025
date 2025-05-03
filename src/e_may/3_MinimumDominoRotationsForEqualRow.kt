@@ -23,6 +23,10 @@ fun main() {
         Pair(
             intArrayOf(2, 1, 2, 4, 2, 2),
             intArrayOf(5, 2, 6, 2, 3, 2)
+        ),
+        Pair(
+            intArrayOf(1, 2, 1, 1, 1, 2, 2, 2),
+            intArrayOf(2, 1, 2, 2, 2, 2, 2, 2)
         )
     )
 
