@@ -60,7 +60,7 @@ private fun minTimeToReach(moveTime: Array<IntArray>): Int {
             if (nx < 0 || nx >= n || ny < 0 || ny >= m) {
                 continue
             }
-            val dist = (max(d[s.x][s.y].toDouble(), moveTime[nx][ny].toDouble()) + 1).toInt()
+            val dist = (max(d[s.x][s.y], moveTime[nx][ny]) + 1)
             if (d[nx][ny] > dist) {
                 d[nx][ny] = dist
                 q.offer(State(nx, ny, dist))
