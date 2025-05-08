@@ -37,7 +37,7 @@ fun main() {
 
 }
 
-fun minTimeToReach(moveTime: Array<IntArray>): Int {
+private fun minTimeToReach(moveTime: Array<IntArray>): Int {
     val n = moveTime.size
     val m = moveTime[0].size
     val d = Array(n) { IntArray(m) { 0x3f3f3f3f } }
@@ -47,6 +47,7 @@ fun minTimeToReach(moveTime: Array<IntArray>): Int {
     d[0][0] = 0
     val q = PriorityQueue<State>()
     q.offer(State(0, 0, 0))
+
     while (!q.isEmpty()) {
         val s = q.poll()
         if (v[s.x][s.y]) {
@@ -69,7 +70,7 @@ fun minTimeToReach(moveTime: Array<IntArray>): Int {
     return d[n - 1][m - 1]
 }
 
-data class State(val x: Int, val y: Int, val time: Int) : Comparable<State> {
+private data class State(val x: Int, val y: Int, val time: Int) : Comparable<State> {
     override fun compareTo(other: State): Int = this.time - other.time
 }
 
