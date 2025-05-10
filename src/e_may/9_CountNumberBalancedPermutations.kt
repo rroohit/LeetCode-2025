@@ -4,7 +4,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 /**
- *  Problem 10. Count Number of Balanced Permutations.
+ *  Problem 9. Count Number of Balanced Permutations.
  *
  *  ## Intuition -
  *
