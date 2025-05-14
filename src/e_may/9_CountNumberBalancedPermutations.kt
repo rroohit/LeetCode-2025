@@ -79,6 +79,6 @@ internal class Solution {
     }
 
     companion object {
-        private const val MOD: Long = 1000000007
+        const val MOD: Long = 1000000007
     }
 }
