@@ -1,8 +1,6 @@
 package e_may
 
-import java.util.*
 import kotlin.math.max
-
 
 /**
  *  Problem 30. Find Closest Node to Given Two Nodes.
