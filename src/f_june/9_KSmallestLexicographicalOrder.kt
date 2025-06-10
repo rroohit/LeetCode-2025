@@ -3,7 +3,7 @@ package f_june
 import kotlin.math.min
 
 /**
- *  Problem 7. K-th Smallest in Lexicographical Order.
+ *  Problem 9. K-th Smallest in Lexicographical Order.
  *
  *  ## Intuition -
  *

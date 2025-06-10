@@ -4,7 +4,7 @@ import kotlin.math.max
 import kotlin.math.min
 
 /**
- *  Problem 8. Maximum Difference Between Even and Odd Frequency I.
+ *  Problem 10. Maximum Difference Between Even and Odd Frequency I.
  *
  *  ## Intuition -
  *
