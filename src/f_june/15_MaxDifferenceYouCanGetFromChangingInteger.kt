@@ -17,14 +17,13 @@ package f_june
  */
 fun main() {
 
-    val testCases = listOf(555, 9)
+    val testCases = listOf(555, 9, 22)
 
     testCases.forEach { num ->
         println("Result ==> ${maxDiff(num)}")
     }
 
 }
-
 
 fun maxDiff(num: Int): Int {
     val minNum = StringBuffer(num.toString())
