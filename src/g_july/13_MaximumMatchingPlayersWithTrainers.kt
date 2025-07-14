@@ -44,11 +44,10 @@ fun matchPlayersAndTrainers(players: IntArray, trainers: IntArray): Int {
         if (players[p] <= trainers[t]) {
             pairs++
             p++
-            t++
-        } else {
-            t++
         }
+        t++
     }
 
     return pairs
 }
+
