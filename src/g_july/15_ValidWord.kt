@@ -14,7 +14,6 @@ package g_july
  *
  * ## Code -
  */
-
 fun main() {
 
     val testCases = listOf(
