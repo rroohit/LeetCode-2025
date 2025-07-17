@@ -30,7 +30,7 @@ fun main() {
 
 }
 
-fun maximumLength(nums: IntArray): Int {
+private fun maximumLength(nums: IntArray): Int {
     var res = 0
     val patterns = arrayOf(intArrayOf(0, 0), intArrayOf(0, 1), intArrayOf(1, 0), intArrayOf(1, 1))
     for (pattern in patterns) {
