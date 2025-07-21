@@ -5,14 +5,14 @@ import java.util.*
 
 // Delete Duplicate Folders in System
 
-internal class Solution {
+internal class Solution20 {
     class Trie {
         var serial: String? = null
         var children: MutableMap<String?, Trie> = HashMap<String?, Trie>()
     }
 
     fun deleteDuplicateFolder(paths: MutableList<MutableList<String?>>): MutableList<MutableList<String?>?> {
-        val root: Trie = Solution.Trie()
+        val root = Trie()
 
         for (path in paths) {
             var cur = root
