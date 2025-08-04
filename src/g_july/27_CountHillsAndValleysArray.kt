@@ -23,7 +23,7 @@ fun main() {
 
     testCases.forEach { nums ->
         println("Result ==> ${countHillValley(nums)}")
-    }
+    }//
 
 }
 
