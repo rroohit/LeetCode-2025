@@ -2,10 +2,6 @@ package i_september
 
 import java.util.PriorityQueue
 
-fun main() {
-
-
-}
 /**
  *  Problem 18. Design Task Manager.
  *
@@ -21,6 +17,10 @@ fun main() {
  *
  * ## Code -
  */
+fun main() {
+
+
+}
 
 class TaskManager(tasks: List<List<Int>>) {
 
