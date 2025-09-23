@@ -1,8 +1,57 @@
 package z_test
 
+import kotlin.math.log
+
 fun main() {
 
 
+}
+
+fun topKFrequent(words: Array<String>, k: Int): List<String> {
+    val freq = hashMapOf<String,Int>()
+    for (key in words) {
+        freq[key] = freq.getOrDefault(key, 0) + 1
+    }
+
+    val buckets = Array<ArrayList<String>>(words.size + 1) { arrayListOf() }
+    for ((word, cnt) in freq) {
+        buckets[cnt].add(word)
+    }
+
+    val ans = ArrayList<String>()
+    for (i in buckets.size - 1 downTo 0) {
+        for (list in buckets[i].sorted()) {
+            ans.add(list)
+            if (ans.size == k) break
+        }
+        if (ans.size == k) break
+    }
+
+    return ans
+}
+
+fun topKFrequent(nums: IntArray, k: Int): IntArray {
+    val freq = hashMapOf<Int, Int>()
+    for (num in nums) {
+        freq[num] = freq.getOrDefault(num, 0) + 1
+    }
+
+    val buckets = Array<ArrayList<Int>>(nums.size + 1) { arrayListOf() }
+    for ((num, count) in freq) {
+        buckets[count].add(num)
+    }
+
+    val ans = IntArray(k)
+    var p = 0
+    for (i in buckets.size - 1 downTo 0) {
+        for (num in buckets[i]) {
+            ans[p++] = num
+            if (p == k) break
+        }
+        if (p == k) break
+    }
+
+    return ans
 }
 
 // TC - O(n * m) :: SC - O(n)
