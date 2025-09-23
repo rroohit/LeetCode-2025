@@ -40,6 +40,30 @@ fun compareVersion(version1: String, version2: String): Int {
     var j = 0
 
     while (i < n1 || j < n2) {
+        var start = i
+        while (i < n1 && version1[i] != '.') i++
+        val a = if (start < n1) version1.substring(start, i).toInt() else 0
+
+        start = j
+        while (j < n2 && version2[j] != '.') j++
+        val b = if (start < n2) version2.substring(start, j).toInt() else 0
+
+        if (a != b) return if (a > b) 1 else -1
+
+        i++
+        j++
+    }
+
+    return 0
+}
+
+fun compareVersion2(version1: String, version2: String): Int {
+    val n1 = version1.length
+    val n2 = version2.length
+    var i = 0
+    var j = 0
+
+    while (i < n1 || j < n2) {
         var a = 0
         while (i < n1 && version1[i] != '.') {
             a = a * 10 + version1[i++].digitToInt()
