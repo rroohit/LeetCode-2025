@@ -34,7 +34,45 @@ fun main() {
     }
 }
 
+
 fun removeAnagrams(words: Array<String>): List<String> {
+    val result = ArrayList<String>()
+    var lastCode: Int? = null
+    for (word in words) {
+        val freq = IntArray(26) { 0 }
+        for (ch in word) freq[ch - 'a']++
+        val currCode = freq.contentHashCode()
+        if (currCode != lastCode) {
+            lastCode = currCode
+            result.add(word)
+        }
+    }
+    return result
+}
+
+fun removeAnagrams2(words: Array<String>): List<String> {
+    val result = ArrayList<String>().apply {
+        add(words[0])
+    }
+    var lastWord = getWordKey(words[0])
+    for (i in 1..<words.size) {
+        val currWord = getWordKey(words[i])
+        if (lastWord != currWord) {
+            result.add(words[i])
+            lastWord = currWord
+        }
+    }
+    return result
+}
+
+private fun getWordKey(word: String): String {
+    val chars = word.toCharArray()
+    chars.sort()
+    return String(chars)
+}
+
+
+private fun removeAnagrams1(words: Array<String>): List<String> {
     val result = ArrayList<String>().apply {
         add(words[0])
     }
